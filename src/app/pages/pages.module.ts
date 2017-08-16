@@ -22,6 +22,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DataTableModule} from "angular2-datatable";
 import {Ng2SmartTableModule} from "ng2-smart-table";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {EventsApi} from "app/services/EventsApi";
+import {CompanyApi, EventStandApi} from "app/services/api";
 
 @NgModule({
     imports: [
@@ -44,6 +46,9 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     ],
     providers: [
         LoginService,
+        EventsApi,
+        CompanyApi,
+        EventStandApi,
         CanActivateViaOAuthGuard,
         AlreadyLoginGuard,
         APIConstants,
