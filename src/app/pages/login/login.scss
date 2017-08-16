@@ -1,0 +1,32 @@
+@import '../../theme/sass/auth';
+.auth-block[_ngcontent-c18]   h1[_ngcontent-c18]{
+  color: red;
+}
+
+.auth-block[_ngcontent-c1] {
+  width: 540px;
+  margin: 0 auto;
+  border-radius: 5px;
+  background: rgba(120, 55, 139, 0.8);
+  color: #fff;
+  padding: 32px;
+}
+
+.signInLogo {
+  width: 100%
+}
+
+.auth-logo{
+  width: 20%;
+  margin: 0 auto;
+}
+
+.auth-block[_ngcontent-c1] a[_ngcontent-c1] {
+  color: #FFFFFF;
+}
+
+.btn:hover, button.btn.btn-default:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  background-color: #55006f;
+}

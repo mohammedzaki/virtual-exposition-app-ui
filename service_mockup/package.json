@@ -1,0 +1,15 @@
+{
+  "name": "faker-service",
+  "version": "0.0.1",
+  "description": "making mockup service for the ihregistery using faker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "adel",
+  "license": "ISC",
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "json-server": "^0.11.2"
+  }
+}
