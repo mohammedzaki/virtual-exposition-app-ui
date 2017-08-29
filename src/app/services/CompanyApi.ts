@@ -40,7 +40,7 @@ import {CustomHttp} from "app/services/CustomHttp";
 
 @Injectable()
 export class CompanyApi {
-    protected basePath = 'http://virtual-exposition-app-api.herokuapp.com/api/v1';
+    protected basePath = 'https://virtual-exposition-app-api.herokuapp.com/api/v1';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
