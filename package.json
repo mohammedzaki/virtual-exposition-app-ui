@@ -12,11 +12,13 @@
     "url": "https://github.com/akveo/ng2-admin/issues"
   },
   "license": "MIT",
+  "angular-cli": {},
   "scripts": {
+    "_heroku":      "https://www.angularonrails.com/deploy-rails-application-angular-cli-webpack-front-end/",
     "ng": "ng",
     "rimraf": "rimraf",
     "changelog": "standard-changelog",
-    "start": "node Server.js",
+    "start": "http-server dist/",
     "start:open": "ng serve --open",
     "start:hmr": "ng serve --hmr",
     "start:aot": "ng serve --aot",
@@ -38,7 +40,8 @@
     "clean:coverage": "npm run rimraf -- coverage",
     "docs:deploy": "wintersmith build -C docs && gh-pages -d docs/build",
     "docs:serve": "wintersmith preview -C docs",
-    "postinstall": "ng build --aot -prod"
+    "preinstall":   "npm install -g http-server",
+    "postinstall":  "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -120,6 +123,7 @@
     "typogr": "0.6.6",
     "underscore": "1.8.3",
     "wintersmith": "2.2.5",
-    "wintersmith-sassy": "1.1.0"
+    "wintersmith-sassy": "1.1.0",
+    "angular-cli": "1.0.0-beta.16"
   }
 }
