@@ -1,3 +1,5 @@
 <ba-card title="Events Map">
-  <div class="event-map"></div>
+    <agm-map [fitBounds]="latLngBounds">
+        <agm-marker *ngFor="let item of expositionEvents" [latitude]=item.lat [longitude]=item.lon></agm-marker>
+    </agm-map>
 </ba-card>

@@ -1,26 +1,49 @@
 import {Component, ElementRef} from '@angular/core';
-import * as GoogleMapsLoader from 'google-maps';
+import {EventsApi} from "app/services/api";
+import {APIConstants} from "app/helpers/Constants/const-apis";
+import {ExpositionEvent} from "app/model/models";
+import {google} from "@agm/core/services/google-maps-types";
+import {MapsAPILoader, LatLngBoundsLiteral} from "@agm/core";
 
 @Component({
-  selector: 'event-map',
-  styleUrls: ['./eventMap.scss'],
-  templateUrl: './eventMap.html',
+    selector: 'event-map',
+    styleUrls: ['./eventMap.scss'],
+    templateUrl: './eventMap.html',
 })
 export class EventMap {
 
-  constructor(private _elementRef:ElementRef) {
-  }
+    data = [];
+    expositionEvents: ExpositionEvent[];
+    filterQuery;
+    subscription;
+    rowsOnPage = 10;
+    sortBy = 'email';
+    sortOrder = 'asc';
+    title: string = 'My first AGM project';
+    lat: number = 85;
+    lng: number = 180;
+    latLngBounds;
 
-  ngAfterViewInit() {
-    let el = this._elementRef.nativeElement.querySelector('.event-map');
+    constructor(
+        private _elementRef: ElementRef,
+        private eventsApi: EventsApi,
+        private apiConst: APIConstants,
+        private mapsAPILoader: MapsAPILoader) {
+        
+        this.mapsAPILoader.load().then(() => {
+            this.latLngBounds = <LatLngBoundsLiteral>{west: 5, north: -50, south: -5, east: -5};
+        });
+    }
 
-    // TODO: do not load this each time as we already have the library after first attempt
-    GoogleMapsLoader.load((google) => {
-      new google.maps.Map(el, {
-        center: new google.maps.LatLng(44.5403, -78.5463),
-        zoom: 8,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      });
-    });
-  }
+    ngOnInit() {
+        this.subscription = this.eventsApi.getAllOpenedEvents().subscribe(data => {
+            console.log(data);
+
+            if (data.success && data.returnObject !== null) {
+                this.expositionEvents = data.returnObject;
+            } else {
+                console.log(data.message);
+            }
+        });
+    }
 }
