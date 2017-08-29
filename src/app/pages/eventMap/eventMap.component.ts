@@ -3,7 +3,7 @@ import {EventsApi} from "app/services/api";
 import {APIConstants} from "app/helpers/Constants/const-apis";
 import {ExpositionEvent} from "app/model/models";
 import {google} from "@agm/core/services/google-maps-types";
-import {MapsAPILoader, LatLngBoundsLiteral} from "@agm/core";
+import {MapsAPILoader, LatLngLiteral, LatLngBoundsLiteral} from "@agm/core";
 
 @Component({
     selector: 'event-map',
@@ -31,7 +31,7 @@ export class EventMap {
         private mapsAPILoader: MapsAPILoader) {
         
         this.mapsAPILoader.load().then(() => {
-            this.latLngBounds = <LatLngBoundsLiteral>{west: 5, north: -50, south: -5, east: -5};
+            this.latLngBounds = <LatLngBoundsLiteral>{west: 5, north: -5, south: -11, east: -11};
         });
     }
 
